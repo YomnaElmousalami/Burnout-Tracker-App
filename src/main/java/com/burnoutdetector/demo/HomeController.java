@@ -16,4 +16,9 @@ public class HomeController {
     return "dashboard";
     }
 
+    @GetMapping("/report")
+    public String report() {
+    return "report";
+    }
+
 }
