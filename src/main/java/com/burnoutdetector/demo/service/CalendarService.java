@@ -46,8 +46,8 @@ public class CalendarService {
         int totalMeetings = events.size();
         double totalHours = 0;
         int weekendMeetings = 0;
-        String earliest = "-";
-        String latest = "-";
+        LocalTime earliestTime = null;
+        LocalTime latestTime = null;
 
         for (Event event : events) {
             if (event.getStart().getDateTime() == null) continue;
@@ -64,14 +64,13 @@ public class CalendarService {
                 weekendMeetings++;
             }
 
-            String timeStr = start.getHour() + ":" + String.format("%02d", start.getMinute());
-            if (earliest.equals("-") || start.toLocalTime().isBefore(LocalTime.parse(earliest))) {
-                earliest = timeStr;
-            }
-            if (latest.equals("-") || start.toLocalTime().isAfter(LocalTime.parse(latest))) {
-                latest = timeStr;
-            }
+            LocalTime time = start.toLocalTime();
+            if (earliestTime == null || time.isBefore(earliestTime)) earliestTime = time;
+            if (latestTime == null || time.isAfter(latestTime)) latestTime = time;
         }
+
+        String earliest = earliestTime != null ? String.format("%02d:%02d", earliestTime.getHour(), earliestTime.getMinute()) : "-";
+        String latest = latestTime != null ? String.format("%02d:%02d", latestTime.getHour(), latestTime.getMinute()) : "-";
 
         return new CalendarSummary(totalMeetings, Math.round(totalHours * 10) / 10.0, earliest, latest, weekendMeetings);
     }
