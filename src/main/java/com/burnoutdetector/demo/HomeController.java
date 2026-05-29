@@ -1,6 +1,7 @@
 package com.burnoutdetector.demo;
 
 import com.burnoutdetector.demo.model.CalendarSummary;
+import com.burnoutdetector.demo.service.BurnoutAnalysisService;
 import com.burnoutdetector.demo.service.CalendarService;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
     private final CalendarService calendarService;
+    private final BurnoutAnalysisService burnoutAnalysisService;
 
-    public HomeController(CalendarService calendarService) {
+    public HomeController(CalendarService calendarService, BurnoutAnalysisService burnoutAnalysisService) {
         this.calendarService = calendarService;
+        this.burnoutAnalysisService = burnoutAnalysisService;
     }
 
     @GetMapping("/")
@@ -32,7 +35,12 @@ public class HomeController {
     }
 
     @GetMapping("/report")
-    public String report() {
+    public String report(@RegisteredOAuth2AuthorizedClient("google") OAuth2AuthorizedClient authorizedClient,
+                         Model model) throws Exception {
+        String accessToken = authorizedClient.getAccessToken().getTokenValue();
+        CalendarSummary summary = calendarService.getCalendarSummary(accessToken);
+        int score = burnoutAnalysisService.calculateScore(summary);
+        model.addAttribute("score", score);
         return "report";
     }
 
