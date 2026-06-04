@@ -1,6 +1,7 @@
 package com.burnoutdetector.demo;
 
 import com.burnoutdetector.demo.model.CalendarSummary;
+import com.burnoutdetector.demo.service.AiService;
 import com.burnoutdetector.demo.service.BurnoutAnalysisService;
 import com.burnoutdetector.demo.service.CalendarService;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
@@ -14,10 +15,12 @@ public class HomeController {
 
     private final CalendarService calendarService;
     private final BurnoutAnalysisService burnoutAnalysisService;
+    private final AiService aiService;
 
-    public HomeController(CalendarService calendarService, BurnoutAnalysisService burnoutAnalysisService) {
+    public HomeController(CalendarService calendarService, BurnoutAnalysisService burnoutAnalysisService, AiService aiService) {
         this.calendarService = calendarService;
         this.burnoutAnalysisService = burnoutAnalysisService;
+        this.aiService = aiService;
     }
 
     @GetMapping("/")
@@ -40,7 +43,9 @@ public class HomeController {
         String accessToken = authorizedClient.getAccessToken().getTokenValue();
         CalendarSummary summary = calendarService.getCalendarSummary(accessToken);
         int score = burnoutAnalysisService.calculateScore(summary);
+        String recommendations = aiService.getRecommendations(summary, score);
         model.addAttribute("score", score);
+        model.addAttribute("recommendations", recommendations);
         return "report";
     }
 

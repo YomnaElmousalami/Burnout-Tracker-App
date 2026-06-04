@@ -10,7 +10,7 @@
         <h1>Your Burnout Report</h1>
         <p>Burnout Risk Score: <span th:text="${score}">0</span>/100</p>
         <h2>AI Recommendations</h2>
-        <p>No recommendations yet. Connect your Google Calendar to get started.</p>
+        <p th:text="${recommendations}">No recommendations yet. Connect your Google Calendar to get started.</p>
     </div>
   </body>
 </html>
