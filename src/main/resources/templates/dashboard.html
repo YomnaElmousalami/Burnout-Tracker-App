@@ -25,6 +25,11 @@
         </div>
     </div>
 
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+        <div class="loading-text">Analyzing your calendar...<br>This may take a few seconds.</div>
+    </div>
+
     <script>
         document.getElementById('analyze-btn').addEventListener('click', function() {
             document.getElementById('loading-overlay').style.display = 'flex';

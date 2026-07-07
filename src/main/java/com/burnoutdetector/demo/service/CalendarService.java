@@ -11,6 +11,7 @@ import com.google.api.services.calendar.model.Events;
 import org.springframework.stereotype.Service;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -100,8 +101,9 @@ public class CalendarService {
             if (!hasBreak) noBreakDays++;
         }
 
-        String earliest = earliestTime != null ? String.format("%02d:%02d", earliestTime.getHour(), earliestTime.getMinute()) : "-";
-        String latest = latestTime != null ? String.format("%02d:%02d", latestTime.getHour(), latestTime.getMinute()) : "-";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h:mm a");
+        String earliest = earliestTime != null ? earliestTime.format(formatter) : "-";
+        String latest = latestTime != null ? latestTime.format(formatter) : "-";
 
         return new CalendarSummary(totalMeetings, Math.round(totalHours * 10) / 10.0, earliest, latest, weekendMeetings, backToBackMeetings, lateNightMeetings, noBreakDays);
     }
