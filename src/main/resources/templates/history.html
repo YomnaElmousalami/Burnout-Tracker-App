@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Burnout History</title>
+  </head>
+  <body>
+    <div>
+        <h1>Your Burnout History</h1>
+
+        <p th:if="${scores.empty}">No history yet. Run a report first.</p>
+
+        <div th:each="entry : ${scores}" class="history-entry">
+            <span class="history-date" th:text="${entry.formattedDate}"></span>
+            <span class="history-score"
+                  th:classappend="${entry.score >= 70} ? 'score-high' : (${entry.score >= 40} ? 'score-medium' : 'score-low')"
+                  th:text="${entry.score} + '/100'"></span>
+            <span class="history-risk" th:text="${entry.riskLevel}"></span>
+        </div>
+
+        <div class="nav-links">
+            <a href="/dashboard">Back to Dashboard</a>
+            <form class="logout-form" th:action="@{/logout}" method="post">
+                <button class="logout-btn" type="submit">Sign Out</button>
+            </form>
+        </div>
+    </div>
+  </body>
+</html>
