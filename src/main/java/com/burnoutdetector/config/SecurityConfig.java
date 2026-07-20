@@ -1,4 +1,4 @@
-package com.burnoutdetector.demo.config;
+package com.burnoutdetector.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

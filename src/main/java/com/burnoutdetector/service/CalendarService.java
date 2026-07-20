@@ -1,6 +1,6 @@
-package com.burnoutdetector.demo.service;
+package com.burnoutdetector.service;
 
-import com.burnoutdetector.demo.model.CalendarSummary;
+import com.burnoutdetector.model.CalendarSummary;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.json.gson.GsonFactory;
@@ -46,7 +46,7 @@ public class CalendarService {
         return buildSummary(events.getItems());
     }
 
-    private CalendarSummary buildSummary(List<Event> events) {
+    CalendarSummary buildSummary(List<Event> events) {
         int totalMeetings = events.size();
         double totalHours = 0;
         int weekendMeetings = 0;

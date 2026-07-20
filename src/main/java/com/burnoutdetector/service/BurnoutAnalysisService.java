@@ -1,6 +1,6 @@
-package com.burnoutdetector.demo.service;
+package com.burnoutdetector.service;
 
-import com.burnoutdetector.demo.model.CalendarSummary;
+import com.burnoutdetector.model.CalendarSummary;
 import org.springframework.stereotype.Service;
 
 @Service

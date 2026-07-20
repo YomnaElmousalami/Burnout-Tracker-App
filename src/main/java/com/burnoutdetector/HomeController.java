@@ -1,11 +1,11 @@
-package com.burnoutdetector.demo;
+package com.burnoutdetector;
 
-import com.burnoutdetector.demo.model.BurnoutScore;
-import com.burnoutdetector.demo.model.CalendarSummary;
-import com.burnoutdetector.demo.repository.BurnoutScoreRepository;
-import com.burnoutdetector.demo.service.AiService;
-import com.burnoutdetector.demo.service.BurnoutAnalysisService;
-import com.burnoutdetector.demo.service.CalendarService;
+import com.burnoutdetector.model.BurnoutScore;
+import com.burnoutdetector.model.CalendarSummary;
+import com.burnoutdetector.repository.BurnoutScoreRepository;
+import com.burnoutdetector.service.AiService;
+import com.burnoutdetector.service.BurnoutAnalysisService;
+import com.burnoutdetector.service.CalendarService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;

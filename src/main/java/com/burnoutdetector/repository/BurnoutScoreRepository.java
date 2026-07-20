@@ -1,6 +1,6 @@
-package com.burnoutdetector.demo.repository;
+package com.burnoutdetector.repository;
 
-import com.burnoutdetector.demo.model.BurnoutScore;
+import com.burnoutdetector.model.BurnoutScore;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 

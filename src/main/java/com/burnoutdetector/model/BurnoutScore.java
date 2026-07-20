@@ -1,4 +1,4 @@
-package com.burnoutdetector.demo.model;
+package com.burnoutdetector.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;

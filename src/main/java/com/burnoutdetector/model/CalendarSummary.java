@@ -1,4 +1,4 @@
-package com.burnoutdetector.demo.model;
+package com.burnoutdetector.model;
 
 public class CalendarSummary {
 
