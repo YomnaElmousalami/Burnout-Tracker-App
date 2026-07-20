@@ -1,6 +1,6 @@
 # App for Learning
 
-Just for learning purposes:
+Just for learning purposes (only works with my Google Calendar):
 
 Deployed on Railway: https://burnout-tracker-app-production.up.railway.app/
 
