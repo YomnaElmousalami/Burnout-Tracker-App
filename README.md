@@ -12,7 +12,7 @@ AI Burnout Detector: a web app where you log in with your Google account, it rea
 | Auth / Google Login | Spring Security OAuth2 Client | included in Spring Boot 3.3.5 |
 | Calendar Data | Google Calendar API v3 | free |
 | AI Framework | Spring AI | 1.0.0 |
-| AI Model | Groq + llama3-8b | free tier |
+| AI Model | Groq + gpt-oss-20b | free tier |
 | Database | H2 (dev) → PostgreSQL (prod) | — |
 | Frontend | Thymeleaf | included in Spring Boot 3.3.5 |
 | Build Tool | Maven | 3.x |
